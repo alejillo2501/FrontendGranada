@@ -1,0 +1,7 @@
+{
+    "/": {
+      "target": "http://ec2-3-148-210-237.us-east-2.compute.amazonaws.com",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
