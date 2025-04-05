@@ -13,8 +13,8 @@ export const appConfig: ApplicationConfig = {
 
       return {
         link: httpLink.create({
-          //uri: 'http://ec2-3-148-210-237.us-east-2.compute.amazonaws.com/graphql',
-          uri: 'http://localhost:8000/graphql',
+          uri: 'http://ec2-3-148-210-237.us-east-2.compute.amazonaws.com/graphql',
+          //uri: 'http://localhost:8000/graphql',
         }),
         cache: new InMemoryCache(),
       };
