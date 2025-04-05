@@ -1,0 +1,15 @@
+<div class="container p-3">
+    <h2 mat-dialog-title class="text-center">Eliminar</h2>
+    <hr>
+    
+    <p class="text-center">¿Desea eliminar el registro <b>#{{data.id}}</b> del usuario <b>{{data.username}}</b>?</p>
+
+    <div mat-dialog-actions align="end">
+        <button mat-raised-button color="primary" (click)="confirm()">
+            Aceptar
+            </button>
+        <button mat-button (click)="cancel()">Cancelar</button>
+        
+    </div>
+
+</div>

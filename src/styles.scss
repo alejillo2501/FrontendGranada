@@ -5,3 +5,45 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .active {
     font-weight: bold;
   }
+
+thead{
+  tr{
+    background-color: #004f4f !important;
+    th{
+      color: #00fbfb;
+    }
+  }
+}
+
+.mat-mdc-paginator-container{
+  background-color: #004f4f !important;
+}
+
+h2{
+  color: #004f4f;
+}
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.example-container mat-form-field {
+  width: 220px;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+
+.example-container form > * {
+  margin: 12px 0;
+}
+
+.example-container .mat-radio-button {
+  margin: 0 12px;
+}
+
+.example-form-fields {
+  display: flex;
+  align-items: flex-start;
+}

@@ -1,0 +1,18 @@
+<div class="container p-3">
+    <h2 mat-dialog-title class="text-center">Actualizar</h2>
+    <hr>
+    <form [formGroup]="form" (ngSubmit)="submit()" mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-100 m-auto d-block">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+    </mat-form-field>  
+
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="cancel()">Cancelar</button>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">
+        Guardar
+        </button>
+    </div>
+    </form>
+
+</div>

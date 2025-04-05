@@ -1,1 +1,82 @@
-<p>paises works!</p>
+<h2>Paises</h2>
+<hr>
+
+<div class="example-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-2 w-full max-w-md mx-auto">
+
+        <mat-form-field [floatLabel]="floatLabel()" class="w-full">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Escribe tu usuario">
+          <mat-error *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">
+            El username es obligatorio
+          </mat-error>      
+        </mat-form-field>
+      
+        <mat-form-field [floatLabel]="floatLabel()" class="w-full">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" formControlName="cantidad" placeholder="Escribe una cantidad">
+          <mat-error *ngIf="form.get('cantidad')?.touched">
+            <span *ngIf="form.get('cantidad')?.hasError('required')">La cantidad es obligatoria</span>
+            <span *ngIf="form.get('cantidad')?.hasError('max')">Debe ser menor de 50</span>
+            <span *ngIf="form.get('cantidad')?.hasError('min')">Debe ser igual o mayor a 0</span>
+          </mat-error>
+        </mat-form-field>
+      
+        <button mat-fab extended type="submit" class="w-100 d-block m-auto mb-4">Enviar</button>
+        
+    </form>
+</div>
+<hr class="mb-5">
+<div class="loader-container" *ngIf="loader">
+    <mat-progress-spinner mode="indeterminate" color="accent" class="m-auto d-block"></mat-progress-spinner>
+    <p>Cargando datos...</p>
+</div>
+
+<div class="row p-2 m-0" *ngIf="show">
+    <div class="col-6 p-0" >
+        <mat-form-field [floatLabel]="floatLabel()" class="w-full mb-4">
+            <mat-label>Buscar Pais</mat-label>
+            <input matInput placeholder="Buscar registros por país" (keyup)="applyFilter($event)" class="mb-4" />    
+        </mat-form-field>
+        
+    </div>
+    <div class="col-6 text-end">
+        <p>
+            <b>Username: </b>{{username}}
+            <br>
+            <b>Cantidad de registros: </b>{{limite}}
+        </p>
+    </div>
+</div>
+
+<div class="p-2">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let country">{{ country.name }}</td>
+        </ng-container>        
+      
+        <ng-container matColumnDef="population">
+          <th mat-header-cell *matHeaderCellDef>Población</th>
+          <td mat-cell *matCellDef="let country">{{ country.population }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="area">
+          <th mat-header-cell *matHeaderCellDef>Área</th>
+          <td mat-cell *matCellDef="let country">{{ country.area }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="densidad">
+          <th mat-header-cell *matHeaderCellDef>Densidad</th>
+          <td mat-cell *matCellDef="let country">{{ country.densidad.toFixed(2) }}</td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      </table>
+      
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+  
